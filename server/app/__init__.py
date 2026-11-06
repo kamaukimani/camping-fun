@@ -13,6 +13,7 @@ def create_app():
     migrate.init_app(app,db)
 
     app.register_blueprint(camper_bp,url_prefix="/campers")
+    app.register_blueprint(activity_bp,url_prefix="/activities")
 
 
     return app
