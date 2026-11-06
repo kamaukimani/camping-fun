@@ -18,7 +18,7 @@ class Camper(db.Model,SerializerMixin):
     activities=association_proxy("signups","activity",creator=lambda activity_obj:Signup(activity=activity_obj))
 
     __table_args__=(
-        CheckConstraint('age >=0 AND age <=18'),
+        CheckConstraint('age >=8 AND age <=18'),
     )
     
     def __repr__(self):
