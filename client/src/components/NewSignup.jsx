@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-function NewSignup({ camperId, onAddSignup }) {
+function NewSignup({ camperId, onAddSignup, API_URL }) {
   const [time, setTime] = useState("");
   const [activityId, setActivityId] = useState("");
   const [activities, setActivities] = useState([]);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    fetch("/activities")
+    fetch(`${API_URL}/activities`)
       .then((r) => r.json())
       .then(setActivities);
   }, []);
@@ -19,7 +19,7 @@ function NewSignup({ camperId, onAddSignup }) {
       camper_id: camperId,
       time: Number(time),
     };
-    fetch("/signups", {
+    fetch(`${API_URL}/signups`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
