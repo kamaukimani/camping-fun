@@ -4,6 +4,7 @@ from app.db import db
 
 camper_bp=Blueprint("camper",__name__)
 
+@camper_bp.route('',methods=["GET","POST"])
 @camper_bp.route('/',methods=["GET","POST"])
 def campers():
     if request.method == "GET":
