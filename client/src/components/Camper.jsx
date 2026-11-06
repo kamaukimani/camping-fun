@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import NewSignup from "./NewSignup";
 
-function Camper() {
+function Camper({API_URL}) {
   const [{ data: camper, error, status }, setCamper] = useState({
     data: null,
     error: null,
@@ -11,7 +11,7 @@ function Camper() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/campers/${id}`).then((r) => {
+    fetch(`${API_URL}/campers/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((camper) =>
           setCamper({ data: camper, error: null, status: "resolved" })
@@ -50,7 +50,7 @@ function Camper() {
         ))}
       </ul>
       <hr />
-      <NewSignup onAddSignup={handleAddSignup} camperId={camper.id} />
+      <NewSignup onAddSignup={handleAddSignup} camperId={camper.id} API_URL={API_URL}/>
     </div>
   );
 }

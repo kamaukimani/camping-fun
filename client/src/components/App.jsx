@@ -3,6 +3,9 @@ import Camper from "./Camper";
 import Home from "./Home";
 
 function App() {
+
+  const API_URL="http://localhost:5555"
+
   return (
     <main>
       <h1>
@@ -11,11 +14,11 @@ function App() {
       <Routes>
             <Route 
                 path="/"
-                element={<Home />}
+                element={<Home  API_URL={API_URL}/>}
             />
             <Route 
                 path="/campers/:id"
-                element={<Camper />}
+                element={<Camper API_URL={API_URL}/>}
             />
       </Routes>
     </main>
