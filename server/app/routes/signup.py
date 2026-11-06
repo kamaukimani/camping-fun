@@ -4,6 +4,8 @@ from app.db import db
 
 signup_bp=Blueprint("signup",__name__)
 
+
+@signup_bp.route('', methods=["GET", "POST"])
 @signup_bp.route('/',methods=["GET","POST"])
 def signups():
     if request.method == "GET":
