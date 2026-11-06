@@ -10,3 +10,14 @@ def campers():
     return make_response(
         campers,200
     )
+
+@camper_bp.route('/<int:id>',methods=["GET"])
+def camper_by_id(id):
+    camper=Camper.query.filter(Camper.id == id).first()
+
+    if camper:
+        response=camper.to_dict()
+        return make_response(
+            response,200
+        )
+    return {"error": "Camper not found"},404
