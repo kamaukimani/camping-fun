@@ -7,7 +7,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 class Activity(db.Model,SerializerMixin):
     __tablename__="activities"
 
-    serialize_rules=("-",)
+    serialize_rules=("-signups.activity",)
 
     id:Mapped[int]=mapped_column(primary_key=True)
     name:Mapped[str]
