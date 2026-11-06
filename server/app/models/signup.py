@@ -2,6 +2,7 @@ from sqlalchemy.orm import Mapped,mapped_column,relationship
 from sqlalchemy import ForeignKey 
 from app.db import db 
 from sqlalchemy_serializer import SerializerMixin 
+from sqlalchemy import CheckConstraint
 
 class Signup(db.Model,SerializerMixin):
     __tablename__="signups"
