@@ -2,6 +2,7 @@ from sqlalchemy.orm import Mapped,mapped_column,relationship
 from app.db import db 
 from sqlalchemy_serializer import SerializerMixin 
 from typing import List
+from sqlalchemy import CheckConstraint
 from sqlalchemy.ext.associationproxy import association_proxy
 
 class Camper(db.Model,SerializerMixin):
