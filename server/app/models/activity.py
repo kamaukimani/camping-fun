@@ -15,3 +15,6 @@ class Activity(db.Model,SerializerMixin):
 
     signups:Mapped[List["Signup"]]=relationship(back_populates="activity",cascade="all,delete-orphan")
     campers=association_proxy("signups","camper",creator=lambda camper_obj:Signup(camper=camper_obj))
+
+    def __repr__(self):
+        return f"<Activity {self.id} {self.name}>"
