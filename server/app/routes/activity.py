@@ -13,7 +13,7 @@ def activities():
         200
     )
 
-@activity_bp.route('/<int:id>',methods=["GET"])
+@activity_bp.route('/<int:id>',methods=["GET","DELETE"])
 def activity_by_id(id):
 
     activity=Activity.query.filter_by(id=id).first()
@@ -30,3 +30,10 @@ def activity_by_id(id):
             response,
             200
         )
+    elif request.method == "DELETE":
+         
+        db.session.delete(activity)
+        db.session.commit()
+
+        return {},204
+        
