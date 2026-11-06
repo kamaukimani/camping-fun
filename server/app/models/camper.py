@@ -12,10 +12,14 @@ class Camper(db.Model,SerializerMixin):
 
     id:Mapped[int]=mapped_column(primary_key=True)
     name:Mapped[str]=mapped_column(nullable=False)
-    age:Mapped[int]=mapped_column(CheckConstraint('0 <= age <= 18'))
+    age:Mapped[int]
 
     signups:Mapped[List["Signup"]]=relationship(back_populates="camper",cascade="all,delete-orphan")
     activities=association_proxy("signups","activity",creator=lambda activity_obj:Signup(activity=activity_obj))
 
+    __table_args__=(
+        CheckConstraint('age >=0 AND age <=18'),
+    )
+    
     def __repr__(self):
         return f"<Camper {self.id} {self.name}>"
