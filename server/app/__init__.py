@@ -14,6 +14,7 @@ def create_app():
 
     app.register_blueprint(camper_bp,url_prefix="/campers")
     app.register_blueprint(activity_bp,url_prefix="/activities")
+    app.register_blueprint(signup_bp,url_prefix="/signups")
 
 
     return app
